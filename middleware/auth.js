@@ -8,13 +8,13 @@ module.exports = {
         
 
         if (!header) {
-            return res.json("Invalid header")
+            return res.status(401).json("Invalid header")
         }
 
         const token = header.split(" ")[1]
         
         if (!token) {
-            return res.json("Invalid token")
+            return res.status(401).json("Invalid token")
         }
 
         try{
@@ -22,7 +22,7 @@ module.exports = {
             req.payload = payload;
             next();
         }catch {
-            return res.json("Invalid token")
+            return res.status(401).json("Invalid token")
         }
     }
 }

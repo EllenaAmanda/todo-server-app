@@ -4,7 +4,7 @@ module.exports = {
     getAllTodos: async(req,res) => {
         const data = await Todo.find({})
 
-        res.json({
+        res.status(200).json({
             message: "Berhasil mengambil semua Todos",
             data
         })
@@ -14,7 +14,7 @@ module.exports = {
 
         const data = await Todo.findById(id).exec()
 
-        res.json({
+        res.status(200).json({
             message: "Berhasil mengambil todo by id",
             data
         })
@@ -27,7 +27,7 @@ module.exports = {
 
         newTodo.save()
 
-        res.json({
+        res.status(201).json({
             message:"data berhasil dibuat",
         })
     },
@@ -40,14 +40,14 @@ module.exports = {
 
         await Todo.findByIdAndUpdate(id,data)
 
-        res.json({
+        res.status(200).json({
             message:"todo berhasil di update"
         })
     },
     deleteAllTodos: async (req,res) => {
         await Todo.deleteMany({})
 
-        res.json({
+        res.status(200).json({
             message: "todo berhasil di hapus semua"
         })
     },
@@ -56,7 +56,7 @@ module.exports = {
 
         await Todo.findByIdAndDelete(id)
 
-        res.json({
+        res.status(200).json({
             message:"todo berhasil di delete berdasarkan id"
         })
     },
