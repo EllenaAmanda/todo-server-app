@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
 
-const todosSchema = new Schema({
+const todoSchema = new mongoose.Schema({
     todo: String,
-    status: Boolean
-})
+    status: Boolean,
+});
 
-const Todos = mongoose.model("Todos", todosSchema)
+const Todo = mongoose.model("Todo", todoSchema)
 
-module.exports = Todos;
+module.exports = Todo
