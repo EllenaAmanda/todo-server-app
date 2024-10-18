@@ -35,8 +35,8 @@ module.exports = {
     updateTodoById: async (req,res) => {
         const {id} = req.params
         const data = req.body;
-        console.log(id)
-        console.log(data)
+        // console.log(id)
+        // console.log(data)
 
         await Todo.findByIdAndUpdate(id,data)
 
