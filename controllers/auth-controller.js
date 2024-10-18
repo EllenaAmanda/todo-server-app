@@ -26,17 +26,21 @@ module.exports = {
        const data = req.body
 
        const user = await User.findOne({username: data.username}).exec() //cari data dlm databaase
-       if (!user) //jika username tidak sama
-        res.json({message: "gagal login"})
+       //jika username tidak sama
+        if (!user) {
+            return  res.status(401).json({message: "gagal login"})
+        }
 
        const checkPassword = bcrypt.compareSync(data.password, user.password)
-       if (!checkPassword) //jika password false
-        res.json({message:"gagal login"});
-
+       //jika password false
+       if (!checkPassword) {
+            return  res.status(401).json({message:"gagal login"});
+       }
+        
         //buat token
         const token = jwt.sign({username: user.username}, process.env.JWT_KEY)
 
-        res.json({
+        res.status(200).json({
             message: "berhasil login",
             token,
         })
