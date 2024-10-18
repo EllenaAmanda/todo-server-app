@@ -1,4 +1,4 @@
-## Deployed Todo App
+## Todo App URL
 https://worthy-winnie-liiiiiu-3d18c884.koyeb.app/
 
 ## Deskripsi
@@ -17,61 +17,57 @@ Aplikasi Todo App ini adalah web service berbasis RESTful API yang memungkinkan 
 ## Autentikasi
 
 ### Registrasi
-- Endpoint: `/auth/register`
-- Method: `POST`
-- Body:
+- **Endpoint**: `/auth/register`
+- **Method**: `POST`
+- **Body**:
   - `username` (String): Nama pengguna.
   - `password` (String): Kata sandi.
-  - Contoh Body:
-    
+  - **Contoh Body**:
+    ```json
     {
-      "username": "user001",
-      "password": "111"
+      "username": "user1",
+      "password": "password123"
     }
-    
-- Response:
-  - Status Code: `201 Created`
-  - Contoh Response:
-    
+    ```
+- **Response**:
+  - **Status Code**: `201 Created`
+  - **Contoh Response**:
+    ```json
     {
       "message": "berhasil regis"
     }
-    
+    ```
 
 ### Login
-- Endpoint: `/auth/login`
-- Method: `POST`
-- Body:
+- **Endpoint**: `/auth/login`
+- **Method**: `POST`
+- **Body**:
   - `username` (String): Nama pengguna.
   - `password` (String): Kata sandi.
-  - Contoh Body:
-    
+  - **Contoh Body**:
+    ```json
     {
-      "username": "user001",
-      "password": "111"
+      "username": "user1",
+      "password": "password123"
     }
-    
-- Response:
-  - Status Code: `200 OK`
-  - Contoh Response:
-    
+    ```
+- **Response**:
+  - **Status Code**: `200 OK`
+  - **Contoh Response**:
+    ```json
     {
       "message": "berhasil login",
       "token": "jwt-token-here"
     }
-    
-- Token yang dihasilkan dapat digunakan untuk otentikasi di endpoint yang membutuhkan akses yang dilindungi.
+    ```
 
-
-## Endpoint
-
-### 1. Mendapatkan Semua Todo
-- Endpoint: `/`
-- Method: `GET`
-- Response: 
-  - Status Code: `200 OK`
-  - Contoh Response:
-    
+1. Mendapatkan Semua Todo
+- **Endpoint**: `/`
+- **Method**: `GET`
+- **Response**: 
+  - **Status Code**: `200 OK`
+  - **Contoh Response**:
+    ```json
     {
       "message": "Berhasil mengambil semua Todos",
       "data": [
@@ -87,18 +83,18 @@ Aplikasi Todo App ini adalah web service berbasis RESTful API yang memungkinkan 
         }
       ]
     }
-    
+    ```
 
 ### 2. Mendapatkan Todo Berdasarkan ID
-- Endpoint: `/:id`
-- Method: `GET`
-- Parameter: 
+- **Endpoint**: `/:id`
+- **Method**: `GET`
+- **Parameter**: 
   - `id` (String): ID dari todo yang ingin diambil.
-- Response: 
-  - Status Code: `200 OK` jika todo ditemukan.
-  - Status Code: `404 Not Found` jika todo tidak ditemukan.
-  - Contoh Response:
-    
+- **Response**: 
+  - **Status Code**: `200 OK` jika todo ditemukan.
+  - **Status Code**: `404 Not Found` jika todo tidak ditemukan.
+  - **Contoh Response**:
+    ```json
     {
       "message": "Berhasil mengambil todo by id",
       "data": {
@@ -107,80 +103,78 @@ Aplikasi Todo App ini adalah web service berbasis RESTful API yang memungkinkan 
         "status": false
       }
     }
-    
+    ```
 
 ### 3. Menambah Todo Baru
-Endpoint: `/`
-Method: `POST`
-Body:
+- **Endpoint**: `/`
+- **Method**: `POST`
+- **Body**:
   - `todo` (String): Nama tugas.
   - `status` (Boolean): Status apakah tugas sudah selesai atau belum.
-  - Contoh Body:
-    
+  - **Contoh Body**:
+    ```json
     {
       "todo": "Pelajari HTML CSS",
       "status": false
     }
-    
-- Response: 
-  - Status Code: `201 Created`
-  - Contoh Response:
-    
+    ```
+- **Response**: 
+  - **Status Code**: `201 Created`
+  - **Contoh Response**:
+    ```json
     {
       "message": "Todo berhasil dibuat"
     }
-    
+    ```
 
 ### 4. Mengupdate Todo Berdasarkan ID
-- Endpoint: `/:id`
-- Method: `PUT`
-- Parameter: 
+- **Endpoint**: `/:id`
+- **Method**: `PUT`
+- **Parameter**: 
   - `id` (String): ID dari todo yang ingin diupdate.
-- Body:
+- **Body**:
   - `todo` (String): Nama tugas.
   - `status` (Boolean): Status apakah tugas sudah selesai atau belum.
-  - Contoh Body:
-    
+  - **Contoh Body**:
+    ```json
     {
       "todo": "Update tugas",
       "status": true
     }
-    
-- Response: 
-  - Status Code: `200 OK` jika todo berhasil diupdate.
-  - Status Code: `404 Not Found` jika todo tidak ditemukan.
-  - Contoh Response:
-    
+    ```
+- **Response**: 
+  - **Status Code**: `200 OK` jika todo berhasil diupdate.
+  - **Status Code**: `404 Not Found` jika todo tidak ditemukan.
+  - **Contoh Response**:
+    ```json
     {
       "message": "Todo berhasil di update"
     }
-    
+    ```
 
 ### 5. Menghapus Semua Todo
-- Endpoint: `/`
-- Method: `DELETE`
-- Response: 
-  - Status Code: `200 OK`
-  - Contoh Response:
-    
+- **Endpoint**: `/`
+- **Method**: `DELETE`
+- **Response**: 
+  - **Status Code**: `200 OK`
+  - **Contoh Response**:
+    ```json
     {
       "message": "Semua todos berhasil dihapus"
     }
-    
+    ```
 
 ### 6. Menghapus Todo Berdasarkan ID
-- Endpoint: `/:id`
-- Method: `DELETE`
-- Parameter: 
+- **Endpoint**: `/:id`
+- **Method**: `DELETE`
+- **Parameter**: 
   - `id` (String): ID dari todo yang ingin dihapus.
-- Response: 
-  - Status Code: `200 OK` jika todo berhasil dihapus.
-  - Status Code: `404 Not Found` jika todo tidak ditemukan.
-  - Contoh Response:
-    
+- **Response**: 
+  - **Status Code**: `200 OK` jika todo berhasil dihapus.
+  - **Status Code**: `404 Not Found` jika todo tidak ditemukan.
+  - **Contoh Response**:
+    ```json
     {
       "message": "Todo berhasil dihapus"
     }
-    
-
-
+    ```
