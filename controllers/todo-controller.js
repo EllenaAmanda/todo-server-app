@@ -32,10 +32,33 @@ module.exports = {
         })
     },
 
-    updateTodoById: (req,res) => {
+    updateTodoById: async (req,res) => {
+        const {id} = req.params
+        const data = req.body;
+        console.log(id)
+        console.log(data)
 
+        await Todo.findByIdAndUpdate(id,data)
+
+        res.json({
+            message:"todo berhasil di update"
+        })
     },
-    deleteAllTodos: (req,res) => {},
-    deleteTodoById: (req,res) => {},
+    deleteAllTodos: async (req,res) => {
+        await Todo.deleteMany({})
+
+        res.json({
+            message: "todo berhasil di hapus semua"
+        })
+    },
+    deleteTodoById: async (req,res) => {
+        const {id} = req.params
+
+        await Todo.findByIdAndDelete(id)
+
+        res.json({
+            message:"todo berhasil di delete berdasarkan id"
+        })
+    },
 
 }
